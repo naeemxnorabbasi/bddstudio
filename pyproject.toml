@@ -11,3 +11,7 @@ dependencies = ["PyYAML>=6.0"]
 
 [project.scripts]
 bddstudio = "bddstudio.cli.main:main"
+
+[tool.setuptools.packages.find]
+include = ["bddstudio*"]
+exclude = ["packaging*", "docs*", "examples*", "tests*", "scripts*"]
