@@ -1,0 +1,41 @@
+name: tests
+
+on:
+  push:
+  pull_request:
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Graphviz
+        run: sudo apt-get update && sudo apt-get install -y graphviz
+
+      - name: Install package
+        run: python -m pip install -e .
+
+      - name: Doctor
+        run: bddstudio doctor
+
+      - name: Check examples
+        run: |
+          bddstudio check examples/and3.yaml
+          bddstudio check examples/xor3.yaml
+          bddstudio check examples/xor4.yaml
+          bddstudio check examples/xnor3.yaml
+          bddstudio check examples/xnor4.yaml
+          bddstudio check examples/mux2.yaml
+          bddstudio check examples/mux4.yaml
+          bddstudio check examples/mult_3x2.yaml
+
+      - name: Build examples
+        run: |
+          bddstudio build examples/and3.yaml --formats png,svg,pdf
+          bddstudio build examples/xor3.yaml --formats png,svg,pdf

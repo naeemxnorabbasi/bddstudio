@@ -1,0 +1,30 @@
+project:
+  name: "2 to 1 MUX"
+
+signals:
+  inputs:
+    - sel
+    - d0
+    - d1
+
+  intermediates: {}
+
+  outputs:
+    y: "sel ? d1 : d0"
+
+bdd:
+  variable_order:
+    - sel
+    - d0
+    - d1
+
+render:
+  output_dir: "build/mux2"
+
+  formats:
+    dot: true
+    png: true
+    svg: true
+    pdf: true
+    markdown: true
+    html: true

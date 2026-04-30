@@ -1,0 +1,33 @@
+project:
+  name: "4 Input XNOR"
+
+signals:
+  inputs:
+    - a
+    - b
+    - c
+    - d
+
+  intermediates:
+    parity: "a ^ b ^ c ^ d"
+
+  outputs:
+    y: "~parity"
+
+bdd:
+  variable_order:
+    - a
+    - b
+    - c
+    - d
+
+render:
+  output_dir: "build/xnor4"
+
+  formats:
+    dot: true
+    png: true
+    svg: true
+    pdf: true
+    markdown: true
+    html: true

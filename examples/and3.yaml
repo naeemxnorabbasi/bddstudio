@@ -1,0 +1,29 @@
+project:
+  name: "3 Input AND Gate"
+
+signals:
+  inputs:
+    - a
+    - b
+    - c
+
+  intermediates: {}
+
+  outputs:
+    y: "a & b & c"
+
+bdd:
+  variable_order:
+    - a
+    - b
+    - c
+
+render:
+  output_dir: "build/and3"
+  formats:
+    dot: true
+    png: true
+    svg: true
+    pdf: true
+    markdown: true
+    html: true

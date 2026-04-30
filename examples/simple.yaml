@@ -1,0 +1,14 @@
+project:
+  name: "Simple Boolean Example"
+signals:
+  inputs: [a, b, c]
+  intermediates:
+    t1: "a & b"
+    t2: "~a & c"
+  outputs:
+    y: "t1 | t2"
+    z: "a ^ b ^ c"
+bdd:
+  variable_order: [a, b, c]
+render:
+  output_dir: "build/simple"

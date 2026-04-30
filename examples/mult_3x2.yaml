@@ -1,0 +1,45 @@
+project:
+  name: "3x2 Multiplier BDD ROBDD"
+
+signals:
+  inputs:
+    - a0
+    - a1
+    - a2
+    - b0
+    - b1
+
+  # IMPORTANT: expressions are quoted because YAML treats & specially.
+  intermediates:
+    x0: "a0 & b0"
+    x1: "a1 & b0"
+    x2: "a2 & b0"
+
+    y0: "a0 & b1"
+    y1: "a1 & b1"
+    y2: "a2 & b1"
+
+    c1: "x1 & y0"
+
+    s2:  "x2 ^ y1"
+    c2a: "x2 & y1"
+    c2b: "s2 & c1"
+    c2:  "c2a | c2b"
+
+  outputs:
+    p0: "x0"
+    p1: "x1 ^ y0"
+    p2: "s2 ^ c1"
+    p3: "y2 ^ c2"
+    p4: "y2 & c2"
+
+bdd:
+  variable_order:
+    - a0
+    - a1
+    - a2
+    - b0
+    - b1
+
+render:
+  output_dir: "build/3x2_multiplier"

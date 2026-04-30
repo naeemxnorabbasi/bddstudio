@@ -1,0 +1,38 @@
+project:
+  name: "4 to 1 MUX"
+
+signals:
+  inputs:
+    - s1
+    - s0
+    - d0
+    - d1
+    - d2
+    - d3
+
+  intermediates:
+    lower: "s0 ? d1 : d0"
+    upper: "s0 ? d3 : d2"
+
+  outputs:
+    y: "s1 ? upper : lower"
+
+bdd:
+  variable_order:
+    - s1
+    - s0
+    - d0
+    - d1
+    - d2
+    - d3
+
+render:
+  output_dir: "build/mux4"
+
+  formats:
+    dot: true
+    png: true
+    svg: true
+    pdf: true
+    markdown: true
+    html: true
